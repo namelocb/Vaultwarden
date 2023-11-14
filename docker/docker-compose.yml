@@ -1,0 +1,16 @@
+version: '3'
+services:
+    vaultwarden:
+        image: vaultwarden/server:latest
+        container_name: vaultwarden
+        environment:
+            - WEBSOCKET_ENABLED=true
+            - ADMIN_TOKEN=${ADMIN_TOKEN}
+            - SIGNUPS_ALLOWED=false
+            - INVITATIONS_ALLOWED=false
+            - SHOW_PASSWORD_HINT=false
+        ports:
+            - ${PORT_80}:80
+        volumes:
+            - ${DIR_DATA}:/data
+        restart: always
